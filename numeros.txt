@@ -1,0 +1,106 @@
+numeros em 5x5: 
+mais de uma forma por ser 5x5?
+
+zero:
+x 0 0 0 x
+0 x x x 0
+0 x x x 0
+0 x x x 0
+x 0 0 0 x
+
+um:
+1 1 x x x
+x 1 x x x
+x 1 x x x
+x 1 x x x
+1 1 1 x x
+
+dois:
+x 2 2 2 x
+2 x x x 2
+x x x 2 x
+x x 2 x x
+2 2 2 2 2
+
+tres:
+3 3 3 3 x
+x x x x 3
+x x x 3 x
+x x x x 3
+3 3 3 3 x
+
+quatro:
+4 x 4 x x
+4 x 4 x x 
+4 4 4 4 4
+x x x 4 x
+x x x 4 x
+
+x 4 x 4 x
+x 4 x 4 x 
+x 4 4 4 4
+x x x 4 x
+x x x 4 x
+
+cinco:
+5 5 5 5 5
+5 0 0 0 0
+5 5 5 5 0
+0 0 0 5 0
+5 5 5 5 0
+
+seis: 
+x 6 6 6 6
+6 x x x x
+6 6 6 6 x
+6 x x x 6
+x 6 6 6 x
+
+sete:
+7 7 7 7 7
+x x x x 7
+x x x 7 x
+x x 7 x x
+x x 7 x x
+
+oito: 
+x 8 8 8 x
+8 x x x 8
+x 8 8 8 x
+8 x x x 8
+x 8 8 8 x
+
+nove: 
+x 9 9 9 x
+9 x x x 9
+x 9 9 9 9
+x x x x 9
+9 9 9 9 9
+
+O primeiro número deve ser a soma da quantidade de letras do primeiro 
+nome da primeira pessoa da dupla, no qual as vogais valem 1 e as 
+consoantes valem 2.
+Caso o valor seja maior que 9, divida por 3.
+-----------------------------------
+primeiro numero = João = 2 + 1 + 1 + 1 = 5
+
+5 5 5 5 5
+5 x x x x
+5 5 5 5 x
+x x x 5 x
+5 5 5 5 x
+
+
+
+O segundo número deve ser a soma da quantidade de letras do 
+primeiro nome da segunda pessoa da dupla, no qual as vogais valem 1 
+e as consoantes valem 2.
+Caso o valor seja maior que 9, divida por 3.
+-------------------------------------
+segundo numero = Vitor = 2 + 1 + 2 + 1 + 2 = 8
+
+x 8 8 8 x
+8 x x x 8
+x 8 8 8 x
+8 x x x 8
+x 8 8 8 x
