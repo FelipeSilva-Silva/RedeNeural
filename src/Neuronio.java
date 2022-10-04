@@ -21,8 +21,19 @@ public class Neuronio {
         }
     }
 
-    public Double fucaoAtivacao(Double saida) {
-        return this.saida = (1 / (1 + Math.exp(-saida)));
+    public Double fucaoAtivacao(Double saida, int funcao) {
+
+        switch (funcao) {
+            case 1:
+                this.saida = (1 / (1 + Math.exp(-saida)));
+                break;
+
+            case 2:
+                this.saida = (2 / (1 + Math.exp(-2 * saida)) - 1);
+                ;
+                break;
+        }
+        return this.saida;
     }
 
     public Double somatorio(List<Double> entrada) {
@@ -35,27 +46,42 @@ public class Neuronio {
     }
 
     public void atuliazarPesosSaida(Double saida, Double saidaEsperada, Double taxaAprendizado,
-            List<Neuronio> SaidasItermediarias) {
+            List<Neuronio> SaidasItermediarias, int funcao) {
 
         // derivada
-        this.gradiente = saida * ((1 - saida) * (saidaEsperada - saida));
+
+        switch (funcao) {
+            case 1:
+                this.gradiente = saida * ((1 - this.saida) * (saidaEsperada - this.saida));
+                break;
+
+            case 2:
+                this.gradiente = (1 - Math.pow(this.saida, 2)) * (saidaEsperada - this.saida);
+                break;
+        }
 
         for (int i = 0; i < this.pesos.size(); i++) {
-            this.pesos.set(i, pesos.get(i) + taxaAprendizado * gradiente * SaidasItermediarias.get(i).saida);
+            this.pesos.set(i, this.pesos.get(i) + taxaAprendizado * this.gradiente * SaidasItermediarias.get(i).saida);
         }
 
     }
 
-    public void atuliazarPesosIntermediaria(Double saida, Double taxaAprendizado,
-            Double[] EntradasDaRede, Double gradiente, List<Double> pesosDaSaida) {
+    public void atuliazarPesosIntermediaria(Double saidaIntermediaria, Double taxaAprendizado,
+            Double[] EntradasDaRede, Double gradiente, int indexSaida, Double saidaEsperada, Double saidaCamadaSaida,
+            int funcao) {
 
         Double delta = 0.0;
-        for (int i = 0; i < 2; i++) {
-            delta += gradiente * this.pesos.get(i);
-        }
+        delta += gradiente * this.pesos.get(0);
 
-        // derivada
-        this.gradiente = saida * ((1 - saida) * delta);
+        switch (funcao) {
+            case 1:
+                this.gradiente = saidaIntermediaria * ((1 - saidaIntermediaria) * delta);
+                break;
+
+            case 2:
+                this.gradiente = (1 - Math.pow(saidaIntermediaria, 2)) * delta;
+                break;
+        }
 
         for (int i = 0; i < this.pesos.size(); i++) {
             this.pesos.set(i, this.pesos.get(i) + taxaAprendizado * this.gradiente * EntradasDaRede[i]);
@@ -63,11 +89,11 @@ public class Neuronio {
 
     }
 
-    public List<Double> getPesos() { 
+    public List<Double> getPesos() {
         return pesos;
     }
 
-    public Double getPesos(int index) { 
+    public Double getPesos(int index) {
         return pesos.get(index);
     }
 
@@ -78,8 +104,5 @@ public class Neuronio {
     public Double getGradiente() {
         return gradiente;
     }
-
-    
-    
 
 }
